@@ -4,8 +4,9 @@ import com.martin.mvvm.core.RetrofitHelper
 import com.martin.mvvm.data.model.QuoteModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class QuoteService {
+class QuoteService @Inject constructor() {
 
     private val retrofit = RetrofitHelper.getRetrofit()
 
