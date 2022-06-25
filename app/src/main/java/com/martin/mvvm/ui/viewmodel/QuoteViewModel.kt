@@ -7,16 +7,20 @@ import com.martin.mvvm.data.model.QuoteModel
 import com.martin.mvvm.data.model.QuoteProvider
 import com.martin.mvvm.domain.GetQuotesUseCase
 import com.martin.mvvm.domain.GetRandomQuoteUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class QuoteViewModel : ViewModel() {
+@HiltViewModel
+class QuoteViewModel @Inject constructor(
+    private val getQuotesUseCase: GetQuotesUseCase,
+    private val getRandomQuoteUseCase: GetRandomQuoteUseCase
+) : ViewModel() {
+
 //LiveData permite al activiry (ui) suscribirse a un modelo y si hay cambios en el puede saberlo
 
     val quoteModel = MutableLiveData<QuoteModel>()  //el valor de adentro va a ir cambiando
     val isLoading = MutableLiveData<Boolean>()
-
-    var getQuotesUseCase = GetQuotesUseCase()
-    var getRandomQuoteUseCase = GetRandomQuoteUseCase()
 
     fun onCreate() {
         viewModelScope.launch {
