@@ -2,4 +2,6 @@ package com.martin.mvvm.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class QuoteModel(@SerializedName("quote") val quote:String,@SerializedName("author") val author:String)
+data class QuoteModel(
+    @SerializedName("quote") val quote:String,
+    @SerializedName("author") val author:String)

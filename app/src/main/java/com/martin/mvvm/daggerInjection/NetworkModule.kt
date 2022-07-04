@@ -1,4 +1,4 @@
-package com.martin.mvvm.di
+package com.martin.mvvm.daggerInjection
 
 import com.martin.mvvm.data.network.QuoteApiClient
 import dagger.Module
