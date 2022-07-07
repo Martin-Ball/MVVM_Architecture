@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class GetRandomQuoteUseCase @Inject constructor(private val repository: QuoteRepository) {
 
-    suspend operator fun invoke(): Quote?{
+    suspend operator fun invoke(): Quote? {
         val quotes = repository.getAllQuotesFromDatabase()
         if(!quotes.isNullOrEmpty()){
             val randomNumber = (quotes.indices).random()

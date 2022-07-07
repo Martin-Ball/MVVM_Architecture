@@ -1,5 +1,6 @@
 package com.martin.mvvm.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,7 +17,7 @@ class QuoteViewModel @Inject constructor(
     private val getRandomQuoteUseCase: GetRandomQuoteUseCase
 ) : ViewModel() {
 
-//LiveData permite al activiry (ui) suscribirse a un modelo y si hay cambios en el puede saberlo
+//LiveData permite al activity (ui) suscribirse a un modelo y si hay cambios en el puede saberlo
 
     val quoteModel = MutableLiveData<Quote>()  //el valor de adentro va a ir cambiando
     val isLoading = MutableLiveData<Boolean>()
@@ -37,6 +38,8 @@ class QuoteViewModel @Inject constructor(
         viewModelScope.launch {
             isLoading.postValue(true)
             val quote = getRandomQuoteUseCase()
+            Log.d("ERROR:", quote.toString())
+
             if (quote != null) {
                 quoteModel.postValue(quote)
             }
